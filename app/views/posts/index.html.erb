@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+
+<%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-block' %>
+
+<br>
+
+<!-- POSTS -->
+<% @posts.each do |post| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text">
+        <%= post.content %>
+      </p>
+      <%= link_to 'Show', post, class: 'btn btn-primary' %>
+      <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-secondary' %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
+<% end %>
+<!-- POSTS -->
