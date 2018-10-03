@@ -1,12 +1,23 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<div class="post">
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <% if false %>
+  <div id="post_note" class="alert alert-warning" role="alert">
+    <%= notice %>
+  </div>
+  <% end %>
+
+  <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group" role="group" aria-label="First group">
+      <%= link_to 'Back', posts_path, class: 'badge badge-secondary' %>
+    </div>
+    <div class="input-group">
+      <%= link_to 'Edit', edit_post_path(@post), class: 'badge badge-secondary' %> 
+    </div>
+  </div>
+
+  <h2 class="post__title"><%= @post.title %></h2>
+
+  <p class="post__content"><%= @post.content %></p>
+
+</div>
