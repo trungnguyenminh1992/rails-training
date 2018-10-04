@@ -9,11 +9,28 @@
   </head>
 
   <body>
-    <header>Blog App</header>
+    <header>
+      <div class="logo"><%= link_to('Blog App', posts_path)  %></div>
+
+      <div class="header__right">
+        <% if user_signed_in? %>
+          <p>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+          </p>
+          <p>
+            <%= link_to('Profile', about_path)  %>  
+          </p>
+        <% else %>
+          <p>
+          <%= link_to('Login', new_user_session_path)  %>  
+          </p>
+        <% end %>
+      </div>
+    </header>
     <div class="container">
 
       <% if notice %>
-      <div id="note" class="alert alert-warning" role="alert">
+      <div id="note">
         <%= notice %>
       </div>
       <% end %>

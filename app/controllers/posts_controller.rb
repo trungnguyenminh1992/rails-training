@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   # GET /posts
   # GET /posts.json
   def index
     @user = 'Tony'
+    # puts current_user.id
+    # puts current_user.posts, 'bbbbbb'
     @posts = Post.all
   end
 
@@ -16,7 +20,17 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    # @post = current_user.posts.build
   end
+
+  # def new
+  #   @post = current_user.posts.build
+  # end
+  
+  # def create
+  #   @post = current_user.posts.build(post_params)
+  #   ...
+  # end
 
   # GET /posts/1/edit
   def edit
@@ -25,7 +39,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    # @post = Post.new(post_params)
+    # @post = current_user.posts.build(post_params)
+    # @post = Post.new(post_params.merge(user_id: current_user.id))
+    @post = current_user.posts.new(post_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @post.save

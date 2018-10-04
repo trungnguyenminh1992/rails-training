@@ -46,10 +46,14 @@ class Application
         # msg = document.getElementById('note')
         msg = $('#note')
         if msg
+            # setTimeout( ->
+            #     # msg.style.display = 'none';
+            #     msg.attr('style', 'display: none')
+            # ,2000)
             setTimeout( ->
-                # msg.style.display = 'none';
-                msg.attr('style', 'display: none')
-            ,2000)
+                msg.addClass('hide');
+            ,1000)
+            # msg.addClass('hide');
 
 this.Application = Application
 
